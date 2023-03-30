@@ -1,0 +1,25 @@
+.container_main{
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-group{
+  width: 36%;
+  margin: 0 auto;
+}
+
+.table_container{
+  width: 50%;
+  font-size: 16px;
+  margin: 0 auto;
+  border: none;
+}
+
+tr:last-child{
+  border: none;
+}
+
+table th{
+  border-color: grey;
+}
