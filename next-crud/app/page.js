@@ -11,9 +11,7 @@ export default function Home() {
     <div className='container_main'>
       <div className="form_container text-light text-center p-5 fs-3 fw-bold">
         <p className="mb-5">React CRUD Operations</p>
-        <Layout>
-          <Read />
-        </Layout>
+        <Layout children={<Read />}/>
       </div>
     </div>
   )
