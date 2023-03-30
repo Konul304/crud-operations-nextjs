@@ -10,7 +10,6 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-       {/* <Read/> */}
         <div>{children}</div>
       </body>
     </html>
