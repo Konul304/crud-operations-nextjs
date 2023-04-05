@@ -1,32 +1,36 @@
 'use client';
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
+import axios from "axios";
 import Link from "next/link";
 
 export default function Update() {
-    const { push } = useRouter()
-    const [id, setID] = useState(null);
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-
+    const { push } = useRouter();
+    const [id, setId] = useState(null)
+    const [firstName, setF] = useState('')
+    const [lastName, setL] = useState('');
 
     useEffect(() => {
-        setID(localStorage.getItem('ID'))
-        setFirstName(localStorage.getItem('First Name'));
-        setLastName(localStorage.getItem('Last Name'));
-    }, []);
+        const params = new URLSearchParams(window.location.search);
+        setId(params.get("id"))
+        setF(params.get("firstName"));
+        setL(params.get("lastName"))
+    }, [firstName])
+
+
+    const [firstName2, setFirstName2] = useState('');
+    const [lastName2, setLastName2] = useState('');
 
     const updateAPIData = (e) => {
         e.preventDefault();
         axios.put(`https://64241e5a47401740433376dd.mockapi.io/crudData/${id}`, {
-            firstName,
-            lastName,
+            firstName: firstName2,
+            lastName: lastName2,
         }).then(() => {
             push('/')
         })
-    }
 
+    }
     return (
         <>
             <div>
@@ -37,24 +41,20 @@ export default function Update() {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="First Name"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder={firstName}
+                            onChange={(e) => setFirstName2(e.target.value)}
                         />
                     </div>
+
                     <div className="form-group text-start">
                         <label className="text-muted mb-3 mt-3">Last Name</label>
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Last Name"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder={lastName}
+                            onChange={(e) => setLastName2(e.target.value)}
                         />
                     </div>
-                    <div className="form-group text-start">
-                    </div>
-
                     <div className='d-flex justify-content-center mt-4'>
                         <Link href="/"><button
                             type="submit"
@@ -69,7 +69,6 @@ export default function Update() {
                         >
                             Submit
                         </button>
-
                     </div>
                 </form>
             </div>
