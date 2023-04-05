@@ -6,30 +6,24 @@ import Link from "next/link";
 
 export default function Update() {
     const { push } = useRouter();
-    const [id, setId] = useState(null)
-    const [firstName, setF] = useState('')
-    const [lastName, setL] = useState('');
+    const [user,setUser]= useState({id:null,firstName:"",lastName:""})
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        setId(params.get("id"))
-        setF(params.get("firstName"));
-        setL(params.get("lastName"))
-    }, [firstName])
-
+        setUser({id:params.get("id"),firstName:params.get("firstName"),lastName:params.get("lastName")})
+    }, [user.firstName])
 
     const [firstName2, setFirstName2] = useState('');
     const [lastName2, setLastName2] = useState('');
 
     const updateAPIData = (e) => {
         e.preventDefault();
-        axios.put(`https://64241e5a47401740433376dd.mockapi.io/crudData/${id}`, {
+        axios.put(`https://64241e5a47401740433376dd.mockapi.io/crudData/${user.id}`, {
             firstName: firstName2,
             lastName: lastName2,
         }).then(() => {
             push('/')
         })
-
     }
     return (
         <>
@@ -41,7 +35,7 @@ export default function Update() {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder={firstName}
+                            placeholder={user.firstName}
                             onChange={(e) => setFirstName2(e.target.value)}
                         />
                     </div>
@@ -51,7 +45,7 @@ export default function Update() {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder={lastName}
+                            placeholder={user.lastName}
                             onChange={(e) => setLastName2(e.target.value)}
                         />
                     </div>
