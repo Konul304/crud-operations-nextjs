@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google'
 import Layout from './layout1'
 import 'bootstrap/dist/css/bootstrap.css';
-import Read from './read/page';
+import Read from './read';
 
 const inter = Inter({ subsets: ['latin'] })
 

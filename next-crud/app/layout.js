@@ -1,5 +1,5 @@
 import './globals.css'
-import Read from './read/page'
+import Read from './read'
 
 export default function RootLayout({ children }) {
   return (
