@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export default function Update() {
     const { push } = useRouter();
-    const [user,setUser]= useState({id:null,firstName:"",lastName:""})
+    const [user, setUser] = useState({ id: null, firstName: "", lastName: "" })
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        setUser({id:params.get("id"),firstName:params.get("firstName"),lastName:params.get("lastName")})
+        setUser({ id: params.get("id"), firstName: params.get("firstName"), lastName: params.get("lastName") })
     }, [user.firstName])
 
     const [firstName2, setFirstName2] = useState('');
