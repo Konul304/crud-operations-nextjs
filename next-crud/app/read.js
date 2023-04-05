@@ -45,25 +45,9 @@ export default function Read() {
                                     <td>{data.lastName}</td>
                                     <td>
                                         <Link
-                                            // href="/update"
                                             href={`/update?id=${data.id}&firstName=${data.firstName}&lastName=${data.lastName}`}
-                                            // href={{
-                                            //     pathname: '/update',
-                                            //     query: { id: data.id, firstName: data.firstName, lastName: data.lastName }
-                                            // }}
                                         >
                                             <button
-                                                // onClick={() => {
-                                                //     <Update props={data}/>
-                                                // }}
-                                                // onClick={() => {
-                                                //     router.push(
-                                                //         {
-                                                //           path: '/update',
-                                                //           query: { id: data.id, firstName: data.firstName, lastName: data.lastName }
-                                                //         },
-                                                //       );
-                                                // }}
                                                 className='btn btn-secondary'>
                                                 Update
                                             </button>
